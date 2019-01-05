@@ -19,18 +19,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "
-from __future__ import print_function;
-import sysconfig;
-print(sysconfig.get_config_var('CFLAGS'), end = '')"
-    OUTPUT_VARIABLE PY_C_CONFIG)
-
-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "
-from __future__ import print_function;
-import sysconfig;
-print(sysconfig.get_config_var('SHLIBS'), end = '')"
-    OUTPUT_VARIABLE PY_LD_CONFIG)
-
+set(PY_C_CONFIG "$ENV['CFLAGS']")
+set(PY_LD_CONFIG "$ENV['LDFLAGS']")
 
 execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "
 from __future__ import print_function;
